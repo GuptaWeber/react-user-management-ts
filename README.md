@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# React Code Standards
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### As developers, we run into lot of known issues as we scale up over codebase. Here are some coding standards which can make your code organized and helps you better read and execute your code.
 
-## Available Scripts
+<br >
+<br >
 
-In the project directory, you can run:
+- Naming Conventions
+- Folder Structure
+- Writing Clean Code
+- Writing Tests
+- Linters and Code Styling
+- Styles
 
-### `npm start`
+## `Naming Conventions`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- It's always a good practice to use Pascal Case to name the components.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+    Header.tsx
+```
 
-### `npm test`
+- User camel case for naming the helper and utility functions.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+    transformUrl.ts
+```
 
-### `npm run build`
+- Test files should be named as the file/component it covers.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+    Header.tsx -> Header.test.tsx
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Variable names should also follow camel casing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+    const companyName = 'Techigai'
+```
 
-### `npm run eject`
+## `Folder Structure`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<img src="./images/folder_structure_1.PNG">
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Include any component in a folder of it's own and add the respective test and style files in the same directory with the same name as component.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+    /Header/Header.tsx
+    /Header/Header.css
+    /Header/Header.test.tsx
+    /Header/index.tsx
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Export the component from the `index.tsx`
 
-## Learn More
+## `Writing Clean Code`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Avoid code repetition, instead write utility functions to reuse the code.
+- Only write a single component in a file.
+- Use Stateful and Presentational Components which helps the separation of concerns and helps reusability.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img src="./images/presentation_component.PNG">
 
-### Code Splitting
+- Use fragments <>…</> instead of divs. Which saves rendering another div to the DOM.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- User Template literals over the string concatenations.
 
-### Analyzing the Bundle Size
+```
+    'Welcome ' + user + '!!' //Avoid
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    `Welcome ${user}!!`  //Good
+```
 
-### Making a Progressive Web App
+- Write comments about why you did something instead how the code works, instead make the code self-explanatory.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Use ES6 Syntax wherever possible.
 
-### Advanced Configuration
+  - Destructuring the props.
+  - Prefer using const over let and var. Use const for the variables which won’t change and let indicates the value of the variable that can be changed.
+  - Prefer Arrow functions for more clean code as they allow simplifying the code to a single line.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Prefer Functional Components and Hooks instead of class components.
