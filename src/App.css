@@ -11,13 +11,8 @@ body {
 }
 
 .container {
-  max-width: 98vw;
-  margin: 1vw auto;
-  overflow: auto;
-  height: 85vh;
-  border: 1px solid steelblue;
-  padding: 15px;
-  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .content {
