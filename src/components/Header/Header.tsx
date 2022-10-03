@@ -1,5 +1,3 @@
-import {FC} from 'react';
-
 const Header = ({title}) => {
   return (
     <header className="header">
